@@ -63,8 +63,8 @@ graph TD
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/agrupulse-mcp.git
-cd agrupulse-mcp
+git clone https://github.com/princepathak1/agrupulse.git
+cd agrupulse
 
 # Install dependencies
 npm install
