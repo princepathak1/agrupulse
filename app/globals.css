@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+@layer base {
+  :root {
+    /* AgruPulse Refined Palette - Light (Primary) */
+    --background: #F7F8F5;
+    --foreground: #202820;
+    --card: #FFFFFF;
+    --card-foreground: #202820;
+    --card-border: #E2E7DF;
+    --primary: #28784A;
+    --primary-foreground: #FFFFFF;
+    --primary-hover: #1f613b;
+    --primary-dark: #174A32;
+    --primary-surface: #EAF3E9;
+    --secondary-text: #687369;
+    --muted: #687369;
+    --muted-bg: #F0F2ED;
+    --border: #E2E7DF;
+    --divider: #E2E7DF;
+    --warning: #B7791F;
+    --warning-bg: #FFF4DC;
+    --error: #C4473A;
+    --error-bg: #FDF2F1;
+    --info: #3976A8;
+    --info-bg: #F0F6FA;
+    --terminal-bg: #1A221C;
+    --terminal-fg: #EAF3E9;
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+    --shadow-elevated: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark, :root[data-theme="dark"], [data-theme="dark"] {
+    /* Optional dark mode with restrained, non-neon contrast */
+    --background: #121814;
+    --foreground: #EEF2ED;
+    --card: #18221B;
+    --card-foreground: #EEF2ED;
+    --card-border: #243329;
+    --primary: #38A169;
+    --primary-foreground: #FFFFFF;
+    --primary-hover: #48BB78;
+    --primary-dark: #1F3626;
+    --primary-surface: #1E2D22;
+    --secondary-text: #96A398;
+    --muted: #96A398;
+    --muted-bg: #1C271F;
+    --border: #243329;
+    --divider: #243329;
+    --warning: #D69E2E;
+    --warning-bg: #2B2110;
+    --error: #E53E3E;
+    --error-bg: #2C1615;
+    --info: #4299E1;
+    --info-bg: #132433;
+    --terminal-bg: #0C120E;
+    --terminal-fg: #D1FAE5;
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    --shadow-elevated: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@theme {
+  --font-sans: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Professional typography hierarchy */
+h1 {
+  font-size: 1.875rem; /* ~30px */
+  line-height: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.25rem; /* ~20px */
+  line-height: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-size: 1.0625rem; /* ~17px */
+  line-height: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p, span, div {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Clean, restrained agricultural card styling */
+.agru-card {
+  background-color: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.agru-card:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Subtle scanning indicator line */
+@keyframes subtleScan {
+  0% {
+    top: 0%;
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 98%;
+    opacity: 0.6;
+  }
+}
+
+.animate-subtle-scan {
+  animation: subtleScan 2.5s ease-in-out infinite alternate;
+}
+
+/* Clean scrollbar for data tables and logs */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--muted-bg);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
